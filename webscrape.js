@@ -13,7 +13,7 @@ const options = {
 rp(options)
     .then(function (data) {
       const $ = cheerio.load(data._root.children[1].children);
-      
+
       // rows of Polish and English translation
       const pRows = $('.r101-wotd-widget__word');
       const eRows = $('.r101-wotd-widget__english');
@@ -36,9 +36,18 @@ rp(options)
         console.log(examples[i-1].polish + ' - ' + examples[i-1].english);
       }
 
+      // TODO put the above variables in the correct spot
+      const wordDiv = document.createElement('h4');
+      const tDiv = document.createElement('h6');
+      // 'part of speech', not 'piece of shit'
+      const posDiv = document.createElement('div');
+      const carousel = document.createElement('div');
+
     })
     .catch(function (err) {
       console.log(err);
+      // TODO write error to page instead of the word of the day stuff
+      return;
         // REQUEST FAILED: ERROR OF SOME KIND
     });
 
