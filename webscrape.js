@@ -13,11 +13,7 @@ const options = {
 rp(options)
     .then(function (data) {
       const $ = cheerio.load(data._root.children[1].children);
-      // data = data._root.children[1].children;
-      // console.log(data[2]);
-      // data.forEach((item) => function() {
-      //   console.log(item);
-      // });
+      
       // rows of Polish and English translation
       const pRows = $('.r101-wotd-widget__word');
       const eRows = $('.r101-wotd-widget__english');
