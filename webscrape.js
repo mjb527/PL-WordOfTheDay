@@ -1,4 +1,3 @@
-
 // request modules
 const rp = require('request-promise');
 const cheerio = require('cheerio');
@@ -9,6 +8,8 @@ const options = {
     return cheerio.load(body);
   }
 };
+
+let wotd_data = {};
 
 rp(options)
     .then(function (data) {
@@ -36,12 +37,10 @@ rp(options)
         console.log(examples[i-1].polish + ' - ' + examples[i-1].english);
       }
 
-      // TODO put the above variables in the correct spot
-      const wordDiv = document.createElement('h4');
-      const tDiv = document.createElement('h6');
-      // 'part of speech', not 'piece of shit'
-      const posDiv = document.createElement('div');
-      const carousel = document.createElement('div');
+      wotd_data.word = word;
+      wotd_data.translation = translation;
+      wotd_data.partOfSpeech = partOfSpeech;
+      wotd_data.examples = examples;
 
     })
     .catch(function (err) {
